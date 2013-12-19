@@ -1,26 +1,18 @@
-﻿Build started 19-12-2013 0:02:27.
-     1>Project "C:\Users\Inge\Documents\Visual Studio 2012\Projects\2DPhysics\2DPhysics\2DPhysics.vcxproj" on node 2 (Build target(s)).
+﻿Build started 19-12-2013 21:56:23.
+     1>Project "C:\Users\Inge\documents\visual studio 2012\Projects\2DPhysics\2DPhysics\2DPhysics.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\Inge\Documents\OpenGL\GLTools-Win\include\GLTools.h" /IC:\Users\Inge\Documents\OpenGL\freeglutFiles\include /Igles_sdk/include /IC:\Users\Inge\Downloads\GL_SDK\gles_sdk\include /I"C:\Users\Inge\Documents\OpenGL\GLTools-Win\include" /I"C:\Users\Inge\Downloads\Super Bible\glut-3.7.6-bin\\" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib Source.cpp
          Source.cpp
-     1>Source.cpp(21): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>Source.cpp(23): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Inge\Documents\Visual Studio 2012\Projects\2DPhysics\Debug\2DPhysics.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Inge\Documents\Visual Studio 2012\Projects\2DPhysics\Debug\2DPhysics.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\Particle.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Inge\documents\visual studio 2012\Projects\2DPhysics\Debug\2DPhysics.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Inge\documents\visual studio 2012\Projects\2DPhysics\Debug\2DPhysics.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\Particle.obj
          Debug\PhysicsElement.obj
          Debug\Source.obj
          Debug\Vector2.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
-     1>Vector2.obj : error LNK2028: unresolved token (0A00005A) "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ) referenced in function "public: void __thiscall Vector2::operator+=(class Vector2)" (??YVector2@@$$FQAEXV0@@Z)
-     1>Source.obj : error LNK2028: unresolved token (0A0001A3) "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ) referenced in function "void __clrcall `dynamic initializer for 'f''(void)" (???__Ef@@YMXXZ@?A0x7d6ac010@@$$FYMXXZ)
-     1>PhysicsElement.obj : error LNK2028: unresolved token (0A000057) "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ) referenced in function "public: __thiscall PhysicsElement::PhysicsElement(class Vector2,class Vector2,class Vector2,double)" (??0PhysicsElement@@$$FQAE@VVector2@@00N@Z)
-     1>Source.obj : error LNK2028: unresolved token (0A00017D) "public: void __thiscall Particle::updatePhysics(void)" (?updatePhysics@Particle@@$$FQAEXXZ) referenced in function "void __cdecl display(void)" (?display@@$$FYAXXZ)
-     1>PhysicsElement.obj : error LNK2019: unresolved external symbol "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ) referenced in function "public: __thiscall PhysicsElement::PhysicsElement(class Vector2,class Vector2,class Vector2,double)" (??0PhysicsElement@@$$FQAE@VVector2@@00N@Z)
-     1>Source.obj : error LNK2001: unresolved external symbol "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ)
-     1>Vector2.obj : error LNK2001: unresolved external symbol "public: __thiscall Vector2::Vector2(void)" (??0Vector2@@$$FQAE@XZ)
-     1>Source.obj : error LNK2019: unresolved external symbol "public: void __thiscall Particle::updatePhysics(void)" (?updatePhysics@Particle@@$$FQAEXXZ) referenced in function "void __cdecl display(void)" (?display@@$$FYAXXZ)
-     1>C:\Users\Inge\Documents\Visual Studio 2012\Projects\2DPhysics\Debug\2DPhysics.exe : fatal error LNK1120: 6 unresolved externals
-     1>Done Building Project "C:\Users\Inge\Documents\Visual Studio 2012\Projects\2DPhysics\2DPhysics\2DPhysics.vcxproj" (Build target(s)) -- FAILED.
+         2DPhysics.vcxproj -> C:\Users\Inge\documents\visual studio 2012\Projects\2DPhysics\Debug\2DPhysics.exe
+     1>Done Building Project "C:\Users\Inge\documents\visual studio 2012\Projects\2DPhysics\2DPhysics\2DPhysics.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.84
+Time Elapsed 00:00:03.21

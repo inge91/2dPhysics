@@ -2,7 +2,7 @@
 #define PARTICLE_H
 #include "PhysicsElement.h"
 #include "Vector2.h"
-
+#include <iostream> 
 class Particle: virtual PhysicsElement
 {
 	public:
@@ -12,7 +12,7 @@ class Particle: virtual PhysicsElement
 		Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double mass);
 		Vector2 getVelocity();
 		Vector2 getPosition();
-		void updatePhysics();
+		void update();
 };
 
 #endif;

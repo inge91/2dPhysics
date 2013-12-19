@@ -30,7 +30,5 @@ public:
 	// vector normalize
 	void normalize();
 
-	
-
 };
 #endif

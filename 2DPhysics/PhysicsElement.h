@@ -1,6 +1,7 @@
 #ifndef PHYSICSELEMENT_H
 #define PHYSICSELEMENT_H
 #include "Vector2.h"
+#include <iostream> 
 
 class PhysicsElement
 {

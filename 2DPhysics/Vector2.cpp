@@ -1,5 +1,10 @@
 #include "Vector2.h"
 
+Vector2::Vector2()
+{
+	Vector2(0, 0);
+}
+
 Vector2::Vector2(double vx, double vy)
 {
 	x = vx;
@@ -16,7 +21,6 @@ Vector2 Vector2::operator+(Vector2 v)
 
 void Vector2::operator+=(Vector2 v)
 {
-	Vector2 temp;
 	x += v.x;
 	y += v.y;
 }
@@ -31,7 +35,6 @@ Vector2 Vector2::operator-(Vector2 v)
 
 void Vector2::operator-=(Vector2 v)
 {
-	Vector2 temp;
 	x -= v.x;
 	y -= v.y;
 }

@@ -2,6 +2,9 @@
 const int XSize = 640;
 const int YSize = 480;
 
+// 50 pixels is a meter
+double d = 50;
+
 vector<Particle> p_list;
 
 Vector2 f;
@@ -11,16 +14,20 @@ void display()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		     // Clear Screen and Depth Buffer
 	glLoadIdentity();
- 
-	for(auto p: p_list)
+
+
+
+
+	for(Particle &p: p_list)
 	{
 		Vector2 pos = p.getPosition();
-
 		glBegin(GL_POINTS);
-		glVertex2f(pos.x, pos.y);
+		glVertex2f(pos.x * d , pos.y * d );
 		glEnd();
-		p.updatePhysics();
+		p.update();
+
 	}
+
  
 	glutSwapBuffers();
 }
@@ -51,8 +58,9 @@ void mouseClick(int button, int state, int x, int y)
 	// Create particle at the position :D
 	if(state == GLUT_UP)
 	{
-		Vector2 pos(x, y);
-		Particle p =  Particle(pos, Vector2(4,0), 5);
+		Vector2 pos(x/d, y/d);
+
+		Particle p =  Particle(pos, Vector2(1,0), 0.001);
 		p_list.push_back(p);
 	}
 
