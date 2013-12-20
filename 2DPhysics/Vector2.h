@@ -1,7 +1,8 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
-#include<stdio.h>
+#include<iostream>
 #include<math.h>
+using namespace std;
 
 class Vector2
 {
@@ -30,5 +31,6 @@ public:
 	// vector normalize
 	void normalize();
 
+	friend ostream &operator<<(ostream &os, Vector2 &v);	
 };
 #endif

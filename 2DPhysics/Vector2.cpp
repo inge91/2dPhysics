@@ -72,3 +72,7 @@ void Vector2::normalize()
 	y = y / m;
 }
 
+std::ostream &operator<<(std::ostream &os, Vector2 &v) 
+{ 
+    return os << "[" << v.x <<" "<<v.y<< "]"<< endl;
+}

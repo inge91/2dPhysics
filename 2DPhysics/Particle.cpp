@@ -23,9 +23,10 @@ Particle::Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double m
 
 }
 
-void Particle::update()
+void Particle::update(double t)
 {
-	updatePhysics(0.00001);
+	cout <<t <<endl;
+	updatePhysics(t);
 }
 
 Vector2 Particle::getVelocity()

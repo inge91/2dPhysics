@@ -5,7 +5,13 @@ const int YSize = 480;
 // 50 pixels is a meter
 double d = 50;
 
+// Desired framerate
+int fps = 60;
+
+//int frameCount = 0;
+int previousTime;
 vector<Particle> p_list;
+double t;
 
 Vector2 f;
 
@@ -15,20 +21,15 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		     // Clear Screen and Depth Buffer
 	glLoadIdentity();
 
-
-
-
+	// Draw particles and their position
 	for(Particle &p: p_list)
 	{
 		Vector2 pos = p.getPosition();
 		glBegin(GL_POINTS);
 		glVertex2f(pos.x * d , pos.y * d );
 		glEnd();
-		p.update();
-
 	}
 
- 
 	glutSwapBuffers();
 }
 
@@ -47,12 +48,6 @@ void initialize ()
 	// Start the timer
 }
 
-void update_orientation(int x, int y)
-{
-   glFlush();
-   display();
-}
-
 void mouseClick(int button, int state, int x, int y)
 {
 	// Create particle at the position :D
@@ -60,11 +55,56 @@ void mouseClick(int button, int state, int x, int y)
 	{
 		Vector2 pos(x/d, y/d);
 
-		Particle p =  Particle(pos, Vector2(1,0), 0.001);
+		Particle p =  Particle(pos, Vector2(5,-5), 1);
 		p_list.push_back(p);
 	}
 
 }
+
+void calculateFPS()
+{
+
+	// Running time
+    int currentTime = glutGet(GLUT_ELAPSED_TIME);
+ 
+    //  Calculate time passed
+    int timeInterval = currentTime - previousTime;
+ 
+	// In case the interval is shorter than the desired fps
+	// wait
+	if(timeInterval < (1/fps) * 1000)
+	{
+		Sleep((1/fps) * 1000 - timeInterval);
+	}
+	// Else just use the time interval
+	else{
+		t = timeInterval/1000.0;
+	}
+	previousTime = currentTime;
+}
+
+//For all physic objects update their states
+void update()
+{
+	for(Particle &p: p_list)
+	{
+		p.update(t);
+	}
+
+}
+
+void idle (void)
+{
+    calculateFPS();
+ 
+	// Update physics
+	update();
+
+    //  Call display function (draw the current frame)
+    glutPostRedisplay ();
+}
+
+
 
 int main(int argc, char **argv)
 {
@@ -76,8 +116,8 @@ int main(int argc, char **argv)
 	glutSetCursor(GLUT_CURSOR_NONE);
 
 	glutDisplayFunc(display);				
-	glutIdleFunc(display);						
-    glutPassiveMotionFunc(update_orientation);
+	glutIdleFunc(idle);						
+   
 	glutMouseFunc(mouseClick);
 	initialize();
 	glutMainLoop();										

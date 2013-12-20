@@ -12,7 +12,7 @@ class Particle: virtual PhysicsElement
 		Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double mass);
 		Vector2 getVelocity();
 		Vector2 getPosition();
-		void update();
+		void update(double t);
 };
 
 #endif;
