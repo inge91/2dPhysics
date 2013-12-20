@@ -30,8 +30,17 @@ void PhysicsElement::updatePhysics(double t)
 		// gravity
 		Vector2 gravity(0, 9.81);
 		v += gravity * t;
-		
+ 		
 		// Add drag
 		//v *= pow(d, t);
 }
 
+Vector2 PhysicsElement::getVelocity()
+{
+	return v;
+}
+
+Vector2 PhysicsElement::getPosition()
+{
+	return p;
+}

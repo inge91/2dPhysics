@@ -7,6 +7,8 @@
 #include <time.h>
 //#include "Vector2.h"
 #include "Particle.h"
+#include "Rectangle.h"
+#include "Circle.h"
 using namespace std;
 
 void display() ;

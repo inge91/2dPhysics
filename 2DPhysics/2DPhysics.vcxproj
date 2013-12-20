@@ -70,14 +70,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PhysicsElement.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PhysicsElement.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>

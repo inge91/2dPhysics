@@ -23,18 +23,9 @@ Particle::Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double m
 
 }
 
-void Particle::update(double t)
+void Particle::draw()
 {
-	cout <<t <<endl;
-	updatePhysics(t);
-}
-
-Vector2 Particle::getVelocity()
-{
-	return v;
-}
-
-Vector2 Particle::getPosition()
-{
-	return p;
+		glBegin(GL_POINTS);
+		glVertex2f( Drawable::meters2Pixels(p.x) , Drawable::meters2Pixels(p.y));
+		glEnd();
 }
