@@ -1,6 +1,7 @@
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
-class Drawable
+#include "Object.h"
+class Drawable: public virtual Object
 {
 	public:
 

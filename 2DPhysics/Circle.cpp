@@ -10,7 +10,7 @@ void Circle::draw()
 {
 	double px = Drawable::meters2Pixels(p.x);
 	double py = Drawable::meters2Pixels(p.y);
-	double vecx = -r;
+	double vecx = -Drawable::meters2Pixels(r);
 	double vecy = 0;
 	double newx = 0;
 	double newy = 0;
@@ -31,4 +31,14 @@ void Circle::draw()
 	}
 	glEnd();
 
+}
+
+// FIXME This should return the object with which is collided
+bool Circle::collisionDetection()
+{
+	if(Drawable::meters2Pixels(p.y + r) > 480)
+	{
+		return true;
+	}
+	return false;
 }

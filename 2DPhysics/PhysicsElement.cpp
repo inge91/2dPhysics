@@ -27,10 +27,16 @@ void PhysicsElement::updatePhysics(double t)
 		// Update velocity
 		v += a * t;
 
+		
 		// gravity
 		Vector2 gravity(0, 9.81);
+		
 		v += gravity * t;
  		
+		if(collisionDetection())
+		{
+			v = Vector2(0, 0);
+		}
 		// Add drag
 		//v *= pow(d, t);
 }

@@ -13,3 +13,12 @@ void Rect::draw()
 		Drawable::meters2Pixels(p.x) + (size.x/2.0), 
 		Drawable::meters2Pixels(p.y) + (size.y/2.0));
 }
+
+bool Rect::collisionDetection()
+{
+	if(p.y + (size.y/2) > 480)
+	{
+		return true;
+	}
+	return false;
+}

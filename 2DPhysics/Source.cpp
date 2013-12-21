@@ -10,8 +10,10 @@ int fps = 60;
 
 //int frameCount = 0;
 int previousTime;
-vector<PhysicsElement*> p_list;
-vector<Drawable*> d_list;
+
+ObjectHandler objs;
+
+
 double t;
 
 Vector2 f;
@@ -23,10 +25,7 @@ void display()
 	glLoadIdentity();
 	
 	// Draw particles and their position
-	for(Drawable *d: d_list)
-	{
-		d->draw();	
-	}
+	objs.draw_objects();
 
 	glutSwapBuffers();
 }
@@ -52,10 +51,11 @@ void mouseClick(int button, int state, int x, int y)
 	if(state == GLUT_UP)
 	{
 		Vector2 pos(x/d, y/d);
-	
-		Circle *r = new Circle( 10, pos, Vector2(5, -5), 1);
-		p_list.push_back(r);
-		d_list.push_back(r);
+		
+		Circle *r = new Circle( 0.5, pos, Vector2(5, -5), 1);
+		
+		objs.add_object(static_cast<Object*>(r));
+		
 	}
 
 }
@@ -82,22 +82,14 @@ void calculateFPS()
 	previousTime = currentTime;
 }
 
-//For all physic objects update their states
-void update()
-{
-	for(PhysicsElement *p: p_list)
-	{
-		p->updatePhysics(t);
-	}
 
-}
 
 void idle (void)
 {
     calculateFPS();
  
 	// Update physics
-	update();
+	objs.update_physics(t);	
 
     //  Call display function (draw the current frame)
     glutPostRedisplay ();
@@ -105,6 +97,8 @@ void idle (void)
 
 int main(int argc, char **argv)
 {
+
+		
 	glutInit(&argc, argv);                                    
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH ); 
 

@@ -1,3 +1,5 @@
+#ifndef CIRCLE_H
+#define CIRCLE_H
 #include "Drawable.h"
 #include "PhysicsElement.h"
 #include "GL\freeglut.h"
@@ -12,7 +14,8 @@ class Circle: public Drawable, public PhysicsElement
 	double r;
 	public: 
 		Circle::Circle(double radius, Vector2 pos, Vector2 velocity, double mass);
-
-	void draw();
+		bool collisionDetection();
+		void draw();
 
 };
+#endif

@@ -29,3 +29,11 @@ void Particle::draw()
 		glVertex2f( Drawable::meters2Pixels(p.x) , Drawable::meters2Pixels(p.y));
 		glEnd();
 }
+
+bool Particle::collisionDetection()
+{
+	if(p.y > 480)
+	{
+		return true;
+	}
+}

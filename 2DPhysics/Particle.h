@@ -15,6 +15,7 @@ class Particle: public PhysicsElement, public Drawable
 		Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double mass);
 		void update(double t);
 		void draw();
+		bool collisionDetection();
 };
 
 #endif;

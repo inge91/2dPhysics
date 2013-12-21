@@ -9,6 +9,9 @@
 #include "Particle.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "ObjectHandler.h"
+#include "Object.h"
+
 using namespace std;
 
 void display() ;

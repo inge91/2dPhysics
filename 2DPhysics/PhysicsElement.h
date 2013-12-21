@@ -2,8 +2,9 @@
 #define PHYSICSELEMENT_H
 #include "Vector2.h"
 #include <iostream> 
+#include "Object.h"
 
-class PhysicsElement
+class PhysicsElement : public virtual Object
 {
 	// Position
 	protected:	
@@ -19,6 +20,7 @@ class PhysicsElement
 	Vector2 getPosition();
 	void updatePhysics(double t);
 	Vector2 calculateForces();
+	virtual bool collisionDetection() = 0;
 };
 
 #endif
