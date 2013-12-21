@@ -18,9 +18,10 @@ class PhysicsElement : public virtual Object
 	PhysicsElement(Vector2 pos, Vector2 velocity, Vector2 acc, double mass);
 	Vector2 getVelocity();
 	Vector2 getPosition();
-	void updatePhysics(double t);
+	void updatePhysics(double t, PhysicsElement *e);
 	Vector2 calculateForces();
-	virtual bool collisionDetection() = 0;
+	// Input argument should probably be something that also work on "static" objects
+	virtual PhysicsElement* collisionDetection(PhysicsElement* e) = 0;
 };
 
 #endif

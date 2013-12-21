@@ -14,7 +14,7 @@ class Circle: public Drawable, public PhysicsElement
 	double r;
 	public: 
 		Circle::Circle(double radius, Vector2 pos, Vector2 velocity, double mass);
-		bool collisionDetection();
+		PhysicsElement* collisionDetection(PhysicsElement* e);
 		void draw();
 
 };

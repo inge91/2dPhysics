@@ -34,11 +34,11 @@ void Circle::draw()
 }
 
 // FIXME This should return the object with which is collided
-bool Circle::collisionDetection()
+PhysicsElement* Circle::collisionDetection(PhysicsElement* e)
 {
 	if(Drawable::meters2Pixels(p.y + r) > 480)
 	{
-		return true;
+		return this;
 	}
-	return false;
+	return NULL;
 }

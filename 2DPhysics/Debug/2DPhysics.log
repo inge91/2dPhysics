@@ -1,21 +1,8 @@
-﻿Build started 21-12-2013 18:52:21.
+﻿Build started 21-12-2013 19:32:41.
      1>Project "C:\Users\Inge\Documents\Visual Studio 2012\Projects\2dPhysics\2DPhysics\2DPhysics.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\dev\freeglut281\\include\ /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib Circle.cpp Drawable.cpp ObjectHandler.cpp Particle.cpp PhysicsElement.cpp Rectangle.cpp Source.cpp
-         Circle.cpp
-     1>Circle.cpp(19): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>Circle.cpp(21): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>Circle.cpp(30): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-         Drawable.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\dev\freeglut281\\include\ /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib ObjectHandler.cpp
          ObjectHandler.cpp
-         Particle.cpp
-     1>Particle.cpp(29): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-         PhysicsElement.cpp
-         Rectangle.cpp
-     1>Rectangle.cpp(14): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-         Source.cpp
-         Generating Code...
-     1>c:\users\inge\documents\visual studio 2012\projects\2dphysics\2dphysics\particle.cpp(39): warning C4715: 'Particle::collisionDetection' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Inge\Documents\Visual Studio 2012\Projects\2dPhysics\Debug\2DPhysics.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\dev\freeglut281\\lib\x86\Debug /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Inge\Documents\Visual Studio 2012\Projects\2dPhysics\Debug\2DPhysics.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\Circle.obj
          Debug\Drawable.obj
@@ -32,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:17.43
+Time Elapsed 00:00:06.56

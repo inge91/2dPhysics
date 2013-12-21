@@ -15,7 +15,7 @@ Vector2 PhysicsElement::calculateForces()
 	return t;
 }
 
-void PhysicsElement::updatePhysics(double t)
+void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 {		
 		// Update position
 		p += v * t;
@@ -33,7 +33,7 @@ void PhysicsElement::updatePhysics(double t)
 		
 		v += gravity * t;
  		
-		if(collisionDetection())
+		if(e != NULL)
 		{
 			v = Vector2(0, 0);
 		}

@@ -17,7 +17,7 @@ class Rect: public Drawable, public PhysicsElement
 	public:
 		Rect(Vector2 size, Vector2 pos, Vector2 velocity, double mass);
 		void draw();
-		bool collisionDetection();
+		PhysicsElement* collisionDetection(PhysicsElement* e);
 };
 
 #endif

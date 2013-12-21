@@ -14,11 +14,11 @@ void Rect::draw()
 		Drawable::meters2Pixels(p.y) + (size.y/2.0));
 }
 
-bool Rect::collisionDetection()
+PhysicsElement* Rect::collisionDetection(PhysicsElement* e)
 {
 	if(p.y + (size.y/2) > 480)
 	{
-		return true;
+		return e;
 	}
-	return false;
+	return NULL;
 }
