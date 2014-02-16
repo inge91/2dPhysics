@@ -11,7 +11,11 @@
 #include "Circle.h"
 #include "ObjectHandler.h"
 #include "Object.h"
-
+#include "Sprite.h"
+#include <conio.h>
+#include <stdlib.h>
+#include <direct.h>
+#include "BowlingBall.h"
 using namespace std;
 
 void display() ;

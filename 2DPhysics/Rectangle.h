@@ -15,7 +15,7 @@ class Rect: public Drawable, public PhysicsElement
 	// Rectangle size (height and width)
 	Vector2 size;
 	public:
-		Rect(Vector2 size, Vector2 pos, Vector2 velocity, double mass);
+		Rect(Vector2 size, Vector2 *pos, Vector2 velocity, double mass);
 		void draw();
 		PhysicsElement* collisionDetection(PhysicsElement* e);
 };

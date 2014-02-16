@@ -1,6 +1,6 @@
 #include "PhysicsElement.h"
 
-PhysicsElement::PhysicsElement(Vector2 pos, Vector2 velocity, Vector2 acc, double mass)
+PhysicsElement::PhysicsElement(Vector2 *pos, Vector2 velocity, Vector2 acc, double mass)
 {
 	p = pos;
 	v = velocity;
@@ -17,8 +17,12 @@ Vector2 PhysicsElement::calculateForces()
 
 void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 {		
+		cout<<"update physics"<<endl;
+		cout<<*p<<endl;
 		// Update position
-		p += v * t;
+		*p += v * t;
+
+		cout<<*p<<endl;
 	
 		Vector2 forces = calculateForces();
 		// Update position given active forces
@@ -26,7 +30,6 @@ void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 
 		// Update velocity
 		v += a * t;
-
 		
 		// gravity
 		Vector2 gravity(0, 9.81);
@@ -48,5 +51,5 @@ Vector2 PhysicsElement::getVelocity()
 
 Vector2 PhysicsElement::getPosition()
 {
-	return p;
+	return *p;
 }

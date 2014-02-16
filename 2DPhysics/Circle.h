@@ -13,7 +13,7 @@ class Circle: public Drawable, public PhysicsElement
 	// Radius  of circle
 	double r;
 	public: 
-		Circle::Circle(double radius, Vector2 pos, Vector2 velocity, double mass);
+		Circle::Circle(double radius, Vector2 *pos, Vector2 velocity, double mass);
 		PhysicsElement* collisionDetection(PhysicsElement* e);
 		void draw();
 

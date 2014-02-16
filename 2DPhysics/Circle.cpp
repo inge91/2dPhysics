@@ -1,5 +1,5 @@
 #include "Circle.h"
-Circle::Circle(double radius, Vector2 pos, Vector2 velocity, double mass)
+Circle::Circle(double radius, Vector2 *pos, Vector2 velocity, double mass)
 	: PhysicsElement(pos, velocity, Vector2(0,0), mass)
 {
 	r = radius;
@@ -8,8 +8,8 @@ Circle::Circle(double radius, Vector2 pos, Vector2 velocity, double mass)
 // Draws a nice little circle
 void Circle::draw()
 {
-	double px = Drawable::meters2Pixels(p.x);
-	double py = Drawable::meters2Pixels(p.y);
+	double px = Drawable::meters2Pixels(p->x);
+	double py = Drawable::meters2Pixels(p->y);
 	double vecx = -Drawable::meters2Pixels(r);
 	double vecy = 0;
 	double newx = 0;
@@ -36,7 +36,7 @@ void Circle::draw()
 // FIXME This should return the object with which is collided
 PhysicsElement* Circle::collisionDetection(PhysicsElement* e)
 {
-	if(Drawable::meters2Pixels(p.y + r) > 480)
+	if(Drawable::meters2Pixels(p->y + r) > 480)
 	{
 		return this;
 	}

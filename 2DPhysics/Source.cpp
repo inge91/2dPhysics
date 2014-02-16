@@ -51,10 +51,14 @@ void mouseClick(int button, int state, int x, int y)
 	if(state == GLUT_UP)
 	{
 		Vector2 pos(x/d, y/d);
+		Vector2 *p = &pos;
+	//	Circle *r = new Circle( 0.5, p, Vector2(5, -5), 1);
 		
-		Circle *r = new Circle( 0.5, pos, Vector2(5, -5), 1);
-		
-		objs.add_object(static_cast<Object*>(r));
+	//	objs.add_object(static_cast<Object*>(r));
+//		Sprite *s = new Sprite("img.png", pos, Vector2(3, 3));
+//		cout<<p->x<<endl;
+		BowlingBall *b = new BowlingBall(pos, Vector2(3,3));
+		objs.add_object(static_cast<Object*>(b));
 		
 	}
 
@@ -95,11 +99,12 @@ void idle (void)
     glutPostRedisplay ();
 }
 
+
+
 int main(int argc, char **argv)
 {
 
-		
-	glutInit(&argc, argv);                                    
+			glutInit(&argc, argv);                                    
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH ); 
 
 	glutInitWindowSize(XSize, YSize);

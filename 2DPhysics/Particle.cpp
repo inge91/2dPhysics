@@ -1,6 +1,7 @@
 #include "Particle.h"
 using namespace std;
 // Wooo everything is handled by virtual class!
+/*
 Particle::Particle()
 	: PhysicsElement(Vector2(0,0), Vector2(0,0), Vector2(0,0), 0)
 {
@@ -26,14 +27,14 @@ Particle::Particle(Vector2 pos, Vector2 velocity, Vector2 acceleration, double m
 void Particle::draw()
 {
 		glBegin(GL_POINTS);
-		glVertex2f( Drawable::meters2Pixels(p.x) , Drawable::meters2Pixels(p.y));
+		glVertex2f( Drawable::meters2Pixels(p->x) , Drawable::meters2Pixels(p->y));
 		glEnd();
 }
 
 bool Particle::collisionDetection()
 {
-	if(p.y > 480)
+	if(p->y > 480)
 	{
 		return true;
 	}
-}
+}*/
