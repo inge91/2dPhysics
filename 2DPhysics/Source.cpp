@@ -104,7 +104,8 @@ void idle (void)
 int main(int argc, char **argv)
 {
 
-			glutInit(&argc, argv);                                    
+		
+	glutInit(&argc, argv);                                    
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH ); 
 
 	glutInitWindowSize(XSize, YSize);

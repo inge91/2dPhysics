@@ -11,9 +11,9 @@ class Drawable: public virtual Object
 	// One meter is 50 pixels
 	static const int m = 50;
 
-	protected:
-		//Meters to pixels
-		static double meters2Pixels(double p);
+	//FIXME: This used to be protected
+	//Meters to pixels
+	static double meters2Pixels(double p);
 };
 
 #endif

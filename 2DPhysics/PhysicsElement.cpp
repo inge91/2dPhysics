@@ -17,13 +17,9 @@ Vector2 PhysicsElement::calculateForces()
 
 void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 {		
-		cout<<"update physics"<<endl;
-		cout<<*p<<endl;
 		// Update position
 		*p += v * t;
 
-		cout<<*p<<endl;
-	
 		Vector2 forces = calculateForces();
 		// Update position given active forces
 		a += forces * (1/m);
