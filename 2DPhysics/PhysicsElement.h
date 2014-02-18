@@ -3,8 +3,9 @@
 #include "Vector2.h"
 #include <iostream> 
 #include "Object.h"
+#include "Sprite.h"
 
-class PhysicsElement : public virtual Object
+class PhysicsElement : public Sprite
 {
 	// Position
 	protected:	
@@ -15,7 +16,7 @@ class PhysicsElement : public virtual Object
 
 	public:
 	// We excpect all physical elements to have a position, velocity, acceleration and mass
-	PhysicsElement(Vector2 *pos, Vector2 velocity, Vector2 acc, double mass);
+	PhysicsElement(std::string location, Vector2 size, Vector2 *pos, Vector2 velocity, Vector2 acc, double mass);
 	Vector2 getVelocity();
 	Vector2 getPosition();
 	void updatePhysics(double t, PhysicsElement *e);

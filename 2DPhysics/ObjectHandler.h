@@ -3,8 +3,6 @@
 #define OBJECTHANDLER_H
 #include"Drawable.h"
 #include"PhysicsElement.h"
-#include"Circle.h"
-#include"Rectangle.h"
 #include"Object.h"
 #include<vector>
 using namespace std;

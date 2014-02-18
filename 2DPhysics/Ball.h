@@ -5,7 +5,7 @@
 #include "PhysicsElement.h"
 #include "Sprite.h"
 
-class Ball: public PhysicsElement, public Sprite
+class Ball: public PhysicsElement
 {
 public:
 	// all balls have a size

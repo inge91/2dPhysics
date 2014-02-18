@@ -1,6 +1,7 @@
 #include "PhysicsElement.h"
 
-PhysicsElement::PhysicsElement(Vector2 *pos, Vector2 velocity, Vector2 acc, double mass)
+PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 *pos, Vector2 velocity, Vector2 acc, double mass)
+	: Sprite(location, pos, size)
 {
 	p = pos;
 	v = velocity;
