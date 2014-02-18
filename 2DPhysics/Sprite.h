@@ -22,9 +22,6 @@ class Sprite: public Drawable{
 		void draw();
 		Vector2 *p;
 		Vector2 size;
-	
-
-
 };
 
 #endif SPRITE_H
