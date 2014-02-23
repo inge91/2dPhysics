@@ -14,6 +14,7 @@ class Drawable: public virtual Object
 	//FIXME: This used to be protected
 	//Meters to pixels
 	static double meters2Pixels(double p);
+	static double pixels2Meters(double p);
 };
 
 #endif

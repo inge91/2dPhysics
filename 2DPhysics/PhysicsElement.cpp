@@ -41,6 +41,32 @@ void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 		//v *= pow(d, t);
 }
 
+ PhysicsElement* PhysicsElement::collisionDetection(PhysicsElement* e)
+{
+	
+	if(Drawable::meters2Pixels(p->y + size.y) > 480)
+	{
+		return this;
+	}
+	if(e != NULL)
+	{
+		vector<Vector2> v = bm.detectCollision(e->bm);
+		if((v)[0].x != 0)
+		{
+			collisions.push_back((v)[0]);
+			collisions.push_back((v)[1]);
+			if(v.size() == 3)
+			{
+				return this;
+			}
+		}
+	}
+	
+
+	return NULL;
+	
+}
+
 Vector2 PhysicsElement::getVelocity()
 {
 	return v;

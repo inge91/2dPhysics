@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <direct.h>
 #include "BowlingBall.h"
+#include "Box.h"
 using namespace std;
 
 void display() ;

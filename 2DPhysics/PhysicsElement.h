@@ -22,7 +22,7 @@ class PhysicsElement : public Sprite
 	void updatePhysics(double t, PhysicsElement *e);
 	Vector2 calculateForces();
 	// Input argument should probably be something that also work on "static" objects
-	virtual PhysicsElement* collisionDetection(PhysicsElement* e) = 0;
+	PhysicsElement* collisionDetection(PhysicsElement* e);
 };
 
 #endif

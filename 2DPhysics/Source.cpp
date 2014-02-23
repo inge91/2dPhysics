@@ -52,12 +52,8 @@ void mouseClick(int button, int state, int x, int y)
 	{
 		Vector2 pos(x/d, y/d);
 		Vector2 *p = &pos;
-	//	Circle *r = new Circle( 0.5, p, Vector2(5, -5), 1);
 		
-	//	objs.add_object(static_cast<Object*>(r));
-//		Sprite *s = new Sprite("img.png", pos, Vector2(3, 3));
-//		cout<<p->x<<endl;
-		BowlingBall *b = new BowlingBall(pos, Vector2(3,3));
+		Box *b = new Box(pos, Vector2(3,3));
 		objs.add_object(static_cast<Object*>(b));
 		
 	}

@@ -2,7 +2,7 @@
 
 
 Sprite::Sprite(std::string location, Vector2 *pos, Vector2 s)
-	: size(s.x, s.y), bm(location, s)
+	: size(s.x, s.y), bm(location, pos, s)
 {
 	p = pos;
 	loadTexture(location);
@@ -52,5 +52,29 @@ void Sprite::draw()
 		glTexCoord2f(1, 1); glVertex2f(px + vecx/2, py + vecy/2);
 		glTexCoord2f(1, 0); glVertex2f(px + vecx/2, py - vecy/2);
 		glEnd();
+
+		
+		// IN CASE OF DEBUG DRAW COLLISION BOX
+		/*
+		if(collisions.size() > 1)
+		{
+
+			for(int i = 0; i < collisions.size(); i+=2)
+			{
+			glDisable (GL_BLEND);
+
+			glDisable(GL_TEXTURE_2D);
+				glBegin(GL_QUADS);
+				glColor3f(255,0,0);
+				//Size still to be determined
+				glVertex2f(collisions[i].x, collisions[i].y);
+				glVertex2f(collisions[i].x, collisions[i+1].y);
+				glVertex2f(collisions[i+1].x, collisions[i+1].y);
+				glVertex2f(collisions[i+1].x, collisions[i].y);
+				glEnd();
+				
+			}
+		}*/
+		
 	}
 }

@@ -14,10 +14,15 @@ class Bitmap
 {
 	
 public:
-	Bitmap(std::string location, Vector2 size);
+	Bitmap(std::string location, Vector2 *pos, Vector2 size);
+	vector<Vector2> Bitmap::detectCollision(Bitmap bm);
 private:
 	Mat bm;
+	Vector2 s;
+	Vector2* p;
 	void createBitmap(std::string location, Vector2 size);
+	vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed = 0);
+	
 
 };
 

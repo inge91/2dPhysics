@@ -11,26 +11,33 @@ void ObjectHandler::draw_objects()
 void ObjectHandler::update_physics(double t)
 {
 	PhysicsElement *e;
-	
-	for(std::vector<int>::size_type i = 0; i != p_vec.size(); i++) 
+
+	// This case should be removed after all things are up and running
+	if(p_vec.size() == 1)
 	{
-		e = NULL;
-		for(std::vector<int>::size_type j = i+1; j != p_vec.size(); j++)
+		e = p_vec[0]->collisionDetection(NULL);
+
+		p_vec[0]->updatePhysics(t, e);
+	}
+	/////////////////////////////////////////////////////////////////
+	else{
+
+		for(std::vector<int>::size_type i = 0; i != p_vec.size(); i++) 
 		{
-			e = p_vec[i]->collisionDetection(p_vec[j]);
-			
-			// In case we collide with another object break (So only one collision is taken into account right now) FIXME
-			if(e != NULL)
+			e = NULL;
+			for(std::vector<int>::size_type j = 0; j != p_vec.size(); j++)
 			{
-				break;
+				e = p_vec[i]->collisionDetection(p_vec[j]);
+
+				// In case we collide with another object break (So only one collision is taken into account right now) FIXME
+				if(e != NULL)
+				{
+					break;
+				}
 			}
+		
+			p_vec[i]->updatePhysics(t, e);
 		}
-		// This case should be removed after all things are up and running
-		if(p_vec.size() == 1)
-		{
-			e = p_vec[0]->collisionDetection(p_vec[0]);
-		}
-		p_vec[i]->updatePhysics(t, e);
 	}
 }
 
