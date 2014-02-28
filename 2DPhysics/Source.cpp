@@ -53,7 +53,7 @@ void mouseClick(int button, int state, int x, int y)
 		Vector2 pos(x/d, y/d);
 		Vector2 *p = &pos;
 		
-		Box *b = new Box(pos, Vector2(3,3));
+		BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
 		objs.add_object(static_cast<Object*>(b));
 		
 	}
