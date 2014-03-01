@@ -6,8 +6,8 @@
 
 #include "Vector2.h"
 #include "Drawable.h"
-#include "GL\glut.h"
-#include "GL\freeglut.h"
+#include "GL/glut.h"
+#include "GL/freeglut.h"
 #include "Bitmap.h"
 class Sprite: public Drawable{
 
@@ -29,4 +29,4 @@ private:
 	Vector2 *p;
 };
 
-#endif SPRITE_H
+#endif

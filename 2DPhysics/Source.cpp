@@ -73,7 +73,13 @@ void calculateFPS()
 	// wait
 	if(timeInterval < (1/fps) * 1000)
 	{
+// FIXME: Seperate file for Sleep definition
+#ifdef _WIN32
 		Sleep((1/fps) * 1000 - timeInterval);
+#else
+        sleep((1/fps) * 1000 - timeInterval);
+#endif
+
 	}
 	// Else just use the time interval
 	else{

@@ -1,7 +1,7 @@
 #ifndef HEADER_H
 #define HEADER_H
-#include "GL\glut.h"
-#include "GL\freeglut.h"
+#include "GL/glut.h"
+#include "GL/freeglut.h"
 #include <stdio.h>
 #include <vector>
 #include <time.h>
@@ -9,9 +9,15 @@
 #include "ObjectHandler.h"
 #include "Object.h"
 #include "Sprite.h"
+
+#ifdef _WIN32
 #include <conio.h>
-#include <stdlib.h>
 #include <direct.h>
+#endif 
+
+#include <unistd.h>
+
+#include <stdlib.h>
 #include "BowlingBall.h"
 #include "Box.h"
 using namespace std;
