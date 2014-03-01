@@ -13,6 +13,8 @@ void Bitmap::createBitmap(std::string location, Vector2 size)
 {
 	// TODO: read alpha values
 	bm = imread(location, CV_LOAD_IMAGE_GRAYSCALE);
+    imshow("bm",bm);
+    waitKey(0);
 	resize(bm, bm, Size(Drawable::meters2Pixels(size.x), Drawable::meters2Pixels(size.y)));
 	threshold(bm, bm, 220, 255, THRESH_BINARY);
 	cv::bitwise_not(bm, bm);
@@ -84,14 +86,22 @@ vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
 	p1.y = 0;
 	p2.x = 0;
 	p2.y = 0;
-	float yd1 = Drawable::meters2Pixels(bm.p->y) - Drawable::meters2Pixels(bm.s.y/2);
-	float yu1 = Drawable::meters2Pixels(bm.p->y) + Drawable::meters2Pixels(bm.s.y/2);
-	float yd2 = Drawable::meters2Pixels(bm2.p->y) - Drawable::meters2Pixels(bm2.s.y/2);
-	float yu2 = Drawable::meters2Pixels(bm2.p->y) + Drawable::meters2Pixels(bm2.s.y/2);
-	float xl1 = Drawable::meters2Pixels(bm.p->x) - Drawable::meters2Pixels(bm.s.x/2);
-	float xr1 = Drawable::meters2Pixels(bm.p->x) + Drawable::meters2Pixels(bm.s.x/2);
-	float xl2 = Drawable::meters2Pixels(bm2.p->x) - Drawable::meters2Pixels(bm2.s.x/2);
-	float xr2 = Drawable::meters2Pixels(bm2.p->x) + Drawable::meters2Pixels(bm2.s.x/2);
+	float yd1 = Drawable::meters2Pixels(bm.p->y) 
+        - Drawable::meters2Pixels(bm.s.y/2);
+	float yu1 = Drawable::meters2Pixels(bm.p->y) 
+        + Drawable::meters2Pixels(bm.s.y/2);
+	float yd2 = Drawable::meters2Pixels(bm2.p->y) 
+        - Drawable::meters2Pixels(bm2.s.y/2);
+	float yu2 = Drawable::meters2Pixels(bm2.p->y) 
+        + Drawable::meters2Pixels(bm2.s.y/2);
+	float xl1 = Drawable::meters2Pixels(bm.p->x) 
+        - Drawable::meters2Pixels(bm.s.x/2);
+	float xr1 = Drawable::meters2Pixels(bm.p->x) 
+        + Drawable::meters2Pixels(bm.s.x/2);
+	float xl2 = Drawable::meters2Pixels(bm2.p->x) 
+        - Drawable::meters2Pixels(bm2.s.x/2);
+	float xr2 = Drawable::meters2Pixels(bm2.p->x) 
+        + Drawable::meters2Pixels(bm2.s.x/2);
 
 	// lowest point of square1 falls between second square
 	if(yd1 > yd2 && yd1 < yu2)
