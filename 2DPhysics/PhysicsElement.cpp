@@ -9,7 +9,7 @@ PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 *pos,
 	m = mass;
 }
 
-Vector2 PhysicsElement::calculateForces()
+Vector2 PhysicsElement::calculateForces(PhysicsElement *e )
 {
 	// Right now we only have the force of gravity...
 	Vector2 t(0, 0);
@@ -21,7 +21,7 @@ void PhysicsElement::updatePhysics(double t, PhysicsElement *e)
 		// Update position
 		*p += v * t;
 
-		Vector2 forces = calculateForces();
+		Vector2 forces = calculateForces(e);
 		// Update position given active forces
 		a += forces * (1/m);
 

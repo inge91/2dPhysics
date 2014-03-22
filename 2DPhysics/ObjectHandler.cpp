@@ -27,6 +27,7 @@ void ObjectHandler::update_physics(double t)
 			e = NULL;
 			for(std::vector<int>::size_type j = 0; j != p_vec.size(); j++)
 			{
+				// We should add a vector for all elements e
 				e = p_vec[i]->collisionDetection(p_vec[j]);
 
 				// In case we collide with another object break (So only one collision is taken into account right now) FIXME
@@ -54,3 +55,9 @@ void ObjectHandler::add_object(Object* obj)
 	}
 }
 
+
+void ObjectHandler::destroy_objects()
+{
+	d_vec.clear();
+	p_vec.clear();
+}

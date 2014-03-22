@@ -43,6 +43,20 @@ void initialize ()
 	 glDisable(GL_DEPTH_TEST);
 	
 	// Start the timer
+	
+	// Initialize barriers
+	StaticElement *s = new StaticElement(new Vector2(3,9), Vector2(20, 0.5));
+	objs.add_object(static_cast<Object*>(s));
+	
+}
+
+void keyPress(unsigned char key, int x, int y)
+{
+	switch(key){
+	case 114: 
+		objs.destroy_objects();
+		break;
+	}
 }
 
 void mouseClick(int button, int state, int x, int y)
@@ -52,13 +66,21 @@ void mouseClick(int button, int state, int x, int y)
 	{
 		Vector2 pos(x/d, y/d);
 		Vector2 *p = &pos;
-		
-		BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
-		objs.add_object(static_cast<Object*>(b));
+		if(button == GLUT_RIGHT_BUTTON)
+		{
+			BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
+			objs.add_object(static_cast<Object*>(b));
+		}
+		else{
+			Box *b = new Box(pos, Vector2(0,0));
+			objs.add_object(static_cast<Object*>(b));
+
+		}
 		
 	}
 
 }
+
 
 void calculateFPS()
 {
@@ -112,12 +134,13 @@ int main(int argc, char **argv)
 
 	glutInitWindowSize(XSize, YSize);
 	glutCreateWindow("Physiscs test");
-	glutSetCursor(GLUT_CURSOR_NONE);
+	glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
 
 	glutDisplayFunc(display);				
 	glutIdleFunc(idle);						
    
 	glutMouseFunc(mouseClick);
+	glutKeyboardFunc(keyPress);
 	initialize();
 	glutMainLoop();										
 	return 0;

@@ -8,6 +8,7 @@
 //#include "Vector2.h"
 #include "ObjectHandler.h"
 #include "Object.h"
+#include "StaticElement.h"
 #include "Sprite.h"
 
 #ifdef _WIN32
@@ -15,8 +16,9 @@
 #include <direct.h>
 #endif 
 
+#ifdef __LINUX__
 #include <unistd.h>
-
+#endif
 #include <stdlib.h>
 #include "BowlingBall.h"
 #include "Box.h"

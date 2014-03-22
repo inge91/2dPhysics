@@ -17,5 +17,6 @@ public:
 	void add_object(Object* obj);
 	//void add_object(PhysicsElement* obj);
 	void update_physics(double t);
+	void destroy_objects();
 };
 #endif

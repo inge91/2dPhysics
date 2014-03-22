@@ -13,8 +13,6 @@ void Bitmap::createBitmap(std::string location, Vector2 size)
 {
 	// TODO: read alpha values
 	bm = imread(location, CV_LOAD_IMAGE_GRAYSCALE);
-    imshow("bm",bm);
-    waitKey(0);
 	resize(bm, bm, Size(Drawable::meters2Pixels(size.x), Drawable::meters2Pixels(size.y)));
 	threshold(bm, bm, 220, 255, THRESH_BINARY);
 	cv::bitwise_not(bm, bm);
@@ -49,7 +47,6 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
 		cv::Mat m2 = bm2.bm(cv::Rect(xoffset2, yoffset2, width, height));
 		Mat m3;
 		cv::bitwise_and(m1, m2, m3);
-	
 		if(countNonZero(m3) > 1)
 		{
 			Vector2 v;
@@ -78,6 +75,12 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
 		----------
 */	
 // LU can also fall outside of the bitmap underneath
+
+/*
+bool DoBoxesIntersect(Box a, Box b) {
+  return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
+         (abs(a.y - b.y) * 2 < (a.height + b.height));
+}*/
 vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
 {
 	Vector2 p1;

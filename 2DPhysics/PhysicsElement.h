@@ -20,7 +20,7 @@ class PhysicsElement : public Sprite
 	Vector2 getVelocity();
 	Vector2 getPosition();
 	void updatePhysics(double t, PhysicsElement *e);
-	Vector2 calculateForces();
+	Vector2 calculateForces(PhysicsElement *e);
 	// Input argument should probably be something that also work on "static" objects
 	PhysicsElement* collisionDetection(PhysicsElement* e);
 };

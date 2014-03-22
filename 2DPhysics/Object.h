@@ -5,5 +5,6 @@
 class Object{
 	
 	virtual int something();
+	
 };
 #endif
