@@ -4,6 +4,7 @@ PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 *pos,
 	: Sprite(location, pos, size)
 {
 	p = pos;
+	prevp = NULL;
 	v = velocity;
 	a = acc;
 	m = mass;
@@ -12,41 +13,59 @@ PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 *pos,
 Vector2 PhysicsElement::calculateForces(Sprite *e )
 {
 	Vector2 t(0, 0);
-	
-	// Right now we only have the force of gravity...
-	if(e != NULL)
-	{
-		t.y = -3;
-	}
+
 	return t;
 }
 
+bool first = true;
 void PhysicsElement::updatePhysics(double t, Sprite *e)
 {		
-		// Update position
-		*p += v * t;
-
+	
 		Vector2 forces = calculateForces(e);
 
 		// Update position given active forces
 		a += forces * (1/m);
-
-
-		
- 		
-		if(e != NULL)
-		{
-			v = Vector2(0, 0);
-		}
-
-	// Update velocity
+		// Update velocity
 		v += a * t;
-		cout<<v<<endl;
 
 		// gravity (this should be added to the calculate forces)
 		Vector2 gravity(0, 9.81);
 
 		v += gravity * t;
+
+
+		if(e != NULL)
+		{
+			if(first == true)
+			{
+			cout<<"Before bounce"<<endl;
+				cout<<v<<endl;
+			}
+		
+
+			v = Vector2(v.x, -v.y * 0.96 );
+			if(first == true)
+			{
+			cout<<"After bounce"<<endl;
+				cout<<v<<endl;
+			}
+		
+			first = false;
+		}
+		else
+		{
+			first = true;
+		}
+
+	
+		// store previous position
+		prevp->x = p->x;
+		prevp->y = p->y;
+
+		// Update position
+		*p += v * t;
+
+
 
 		// Add drag
 		//v *= pow(d, t);
@@ -55,10 +74,6 @@ void PhysicsElement::updatePhysics(double t, Sprite *e)
  Sprite* PhysicsElement::collisionDetection(Sprite* e)
 {
 	
-/*	if(Drawable::meters2Pixels(p->y + size.y) > 480)
-	{
-		return this;
-	}*/
 	if(e != NULL)
 	{
 		vector<Vector2> v = bm.detectCollision(e->bm);
@@ -68,7 +83,6 @@ void PhysicsElement::updatePhysics(double t, Sprite *e)
 			collisions.push_back((v)[1]);
 			if(v.size() == 3)
 			{
-				cout<<"got a hit"<<endl;
 				return e;
 			}
 		}

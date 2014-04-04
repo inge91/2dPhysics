@@ -10,6 +10,7 @@ class PhysicsElement : public Sprite
 	// Position
 	protected:	
 	Vector2 *p;
+	Vector2 *prevp;
 	Vector2 v;
 	Vector2 a;
 	double m;

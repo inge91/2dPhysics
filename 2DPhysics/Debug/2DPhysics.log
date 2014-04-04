@@ -1,4 +1,4 @@
-﻿Build started 22-3-2014 22:49:56.
+﻿Build started 22-3-2014 23:16:42.
      1>Project "C:\Users\Inge\Documents\Visual Studio 2012\Projects\Computer Vision\2dPhysics\2DPhysics\2DPhysics.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\soil\Simple OpenGL Image Library\\src" /IC:\opencv246\build\x86\vc11\..\..\include /IC:\freeglut281\include /I"C:\Users\Inge\Documents\OpenGL\GLTools-Win\include\GLTools.h" /IC:\Users\Inge\Documents\OpenGL\freeglutFiles\include /Igles_sdk/include /IC:\Users\Inge\Downloads\GL_SDK\gles_sdk\include /I"C:\Users\Inge\Documents\OpenGL\GLTools-Win\include" /I"C:\Users\Inge\Downloads\Super Bible\glut-3.7.6-bin\\" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib PhysicsElement.cpp
@@ -26,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.47
+Time Elapsed 00:00:09.61
