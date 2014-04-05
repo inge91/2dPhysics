@@ -3,7 +3,13 @@
 #include "Vector2.h"
 #include <iostream> 
 #include "Object.h"
+#include "StaticElement.h"
 #include "Sprite.h"
+#include"opencv/cv.h"
+#include"opencv2/opencv.hpp"
+#ifdef __linux__
+#include <unistd.h>
+#endif
 
 class PhysicsElement : public Sprite
 {
@@ -24,6 +30,7 @@ class PhysicsElement : public Sprite
 	Vector2 calculateForces(Sprite *e);
 	// Input argument should probably be something that also work on "static" objects
 	Sprite* collisionDetection(Sprite* e);
+    vector<Vector2> collisionDetectionStatic(Bitmap bm2);
 };
 
 #endif

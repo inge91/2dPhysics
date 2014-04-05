@@ -15,13 +15,14 @@
 #include <conio.h>
 #include <direct.h>
 #endif 
-
-#ifdef __LINUX__
+#ifdef __linux__
 #include <unistd.h>
 #endif
 #include <stdlib.h>
 #include "BowlingBall.h"
 #include "Box.h"
+
+
 using namespace std;
 
 void display() ;

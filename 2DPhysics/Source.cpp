@@ -1,4 +1,5 @@
 #include "Header.h"
+
 const int XSize = 640;
 const int YSize = 480;
 
@@ -68,7 +69,8 @@ void mouseClick(int button, int state, int x, int y)
 		Vector2 *p = &pos;
 		if(button == GLUT_RIGHT_BUTTON)
 		{
-			BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
+			//BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
+			BowlingBall *b = new BowlingBall(Vector2(0,0), Vector2(0,0));
 			objs.add_object(static_cast<Object*>(b));
 		}
 		else{
@@ -99,7 +101,7 @@ void calculateFPS()
 #ifdef _WIN32
 		Sleep((1/fps) * 1000 - timeInterval);
 #else
-        sleep((1/fps) * 1000 - timeInterval);
+        usleep((1/fps) * 1000 - timeInterval);
 #endif
 
 	}

@@ -6,6 +6,7 @@ Bitmap::Bitmap(std::string location, Vector2 *pos, Vector2 size)
 	:s(size.x, size.y)
 {
 	p = pos;
+    cout<<p<<endl;
 	createBitmap(location, size);
 }
 
@@ -57,7 +58,6 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
 	}
 
 	return r;
-
 }
 
 
@@ -77,10 +77,8 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
 // LU can also fall outside of the bitmap underneath
 
 /*
-bool DoBoxesIntersect(Box a, Box b) {
-  return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
-         (abs(a.y - b.y) * 2 < (a.height + b.height));
-}*/
+ *Returns the overlap bounding box in pixels position
+ */
 vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
 {
 	Vector2 p1;
