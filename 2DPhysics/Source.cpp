@@ -21,7 +21,6 @@ Vector2 f;
 
 void display() 
 {
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		     // Clear Screen and Depth Buffer
 	glLoadIdentity();
 	
@@ -46,7 +45,7 @@ void initialize ()
 	// Start the timer
 	
 	// Initialize barriers
-	StaticElement *s = new StaticElement(new Vector2(3,9), Vector2(20, 0.5));
+	StaticElement *s = new StaticElement(Vector2(3,9), Vector2(20, 0.5));
 	objs.add_object(static_cast<Object*>(s));
 	
 }
@@ -70,19 +69,16 @@ void mouseClick(int button, int state, int x, int y)
 		if(button == GLUT_RIGHT_BUTTON)
 		{
 			//BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
-			BowlingBall *b = new BowlingBall(Vector2(0,0), Vector2(0,0));
+			BowlingBall *b = new BowlingBall(pos, Vector2(0,0));
 			objs.add_object(static_cast<Object*>(b));
 		}
 		else{
 			Box *b = new Box(pos, Vector2(0,0));
 			objs.add_object(static_cast<Object*>(b));
-
 		}
-		
 	}
 
 }
-
 
 void calculateFPS()
 {

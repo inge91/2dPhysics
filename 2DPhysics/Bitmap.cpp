@@ -2,12 +2,18 @@
 #include "Bitmap.h"
 
 
-Bitmap::Bitmap(std::string location, Vector2 *pos, Vector2 size)
+Bitmap::Bitmap(std::string location, Vector2 size)
 	:s(size.x, size.y)
 {
-	p = pos;
-    cout<<p<<endl;
 	createBitmap(location, size);
+}
+
+void Bitmap::setPosition(Vector2* pos)
+{
+    cout<<*pos<<endl;
+    p = pos;
+    cout<<*p<<endl;
+    cout<<"end"<<endl;
 }
 
 void Bitmap::createBitmap(std::string location, Vector2 size)
@@ -20,19 +26,21 @@ void Bitmap::createBitmap(std::string location, Vector2 size)
 }
 
 // Checks if there is collision between bitmaps (overlapping pixels that are occupied)
-vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
+vector<Vector2> Bitmap::detectCollision(Bitmap bm2, Vector2 p1, Vector2 p2)
 {
 
+    cout<<"start"<<endl;
 	// Find the region of collision detection
-	vector<Vector2> r = detectOverlap(*this, bm2);
+	vector<Vector2> r = detectOverlap(*this, bm2, p1, p2);
+    cout<<"stop"<<endl;
 	// Create 2 matrices with the format described in s.
-	double px1 = Drawable::meters2Pixels(p->x);
-	double py1 = Drawable::meters2Pixels(p->y);
+	double px1 = Drawable::meters2Pixels(p1.x);
+	double py1 = Drawable::meters2Pixels(p1.y);
 	double vecx1 = Drawable::meters2Pixels(s.x);
 	double vecy1 = Drawable::meters2Pixels(s.y);
 
-	double px2 = Drawable::meters2Pixels(bm2.p->x);
-	double py2 = Drawable::meters2Pixels(bm2.p->y);
+	double px2 = Drawable::meters2Pixels(p2.x);
+	double py2 = Drawable::meters2Pixels(p2.y);
 	double vecx2 = Drawable::meters2Pixels(bm2.s.x);
 	double vecy2 = Drawable::meters2Pixels(bm2.s.y);
 	
@@ -79,7 +87,7 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2)
 /*
  *Returns the overlap bounding box in pixels position
  */
-vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
+vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, Vector2 pf, Vector2 ps,  int reversed)
 {
 	Vector2 p1;
 	Vector2 p2;
@@ -87,22 +95,24 @@ vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
 	p1.y = 0;
 	p2.x = 0;
 	p2.y = 0;
-	float yd1 = Drawable::meters2Pixels(bm.p->y) 
+
+	float yd1 = Drawable::meters2Pixels(pf.y) 
         - Drawable::meters2Pixels(bm.s.y/2);
-	float yu1 = Drawable::meters2Pixels(bm.p->y) 
+	float yu1 = Drawable::meters2Pixels(pf.y) 
         + Drawable::meters2Pixels(bm.s.y/2);
-	float yd2 = Drawable::meters2Pixels(bm2.p->y) 
+	float yd2 = Drawable::meters2Pixels(ps.y) 
         - Drawable::meters2Pixels(bm2.s.y/2);
-	float yu2 = Drawable::meters2Pixels(bm2.p->y) 
+	float yu2 = Drawable::meters2Pixels(ps.y) 
         + Drawable::meters2Pixels(bm2.s.y/2);
-	float xl1 = Drawable::meters2Pixels(bm.p->x) 
+	float xl1 = Drawable::meters2Pixels(ps.x) 
         - Drawable::meters2Pixels(bm.s.x/2);
-	float xr1 = Drawable::meters2Pixels(bm.p->x) 
+	float xr1 = Drawable::meters2Pixels(pf.x) 
         + Drawable::meters2Pixels(bm.s.x/2);
-	float xl2 = Drawable::meters2Pixels(bm2.p->x) 
+	float xl2 = Drawable::meters2Pixels(ps.x) 
         - Drawable::meters2Pixels(bm2.s.x/2);
-	float xr2 = Drawable::meters2Pixels(bm2.p->x) 
+	float xr2 = Drawable::meters2Pixels(ps.x) 
         + Drawable::meters2Pixels(bm2.s.x/2);
+
 
 	// lowest point of square1 falls between second square
 	if(yd1 > yd2 && yd1 < yu2)
@@ -148,7 +158,7 @@ vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, int reversed)
 	// call function again with reversed bitmaps
 	if (p1.x == NULL && !reversed)
 	{
-		return detectOverlap(bm2, bm, 1);
+		return detectOverlap(bm2, bm, ps, pf, 1);
 	}
 	// Else return the points in a vector 
 	else{

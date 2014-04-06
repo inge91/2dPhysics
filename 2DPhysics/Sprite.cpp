@@ -1,11 +1,13 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(std::string location, Vector2 *pos, Vector2 s)
-	: size(s.x, s.y), bm(location, pos, s)
+Sprite::Sprite(std::string location, Vector2 pos, Vector2 s)
+	: size(s.x, s.y), bm(location, s)
 {
 	p = pos;
+    prevp = pos;
 	loadTexture(location);
+    bm.setPosition(&pos);
 	
 }
 
@@ -37,8 +39,8 @@ void Sprite::draw()
 
 	if(texture != NULL)
 	{
-		double px = Drawable::meters2Pixels(p->x);
-		double py = Drawable::meters2Pixels(p->y);
+		double px = Drawable::meters2Pixels(p.x);
+		double py = Drawable::meters2Pixels(p.y);
 		double vecx = Drawable::meters2Pixels(size.x);
 		double vecy = Drawable::meters2Pixels(size.y);
 		glEnable(GL_TEXTURE_2D);

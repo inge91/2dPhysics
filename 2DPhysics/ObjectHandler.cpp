@@ -19,10 +19,8 @@ void ObjectHandler::update_physics(double t)
 		
 		for(std::vector<int>::size_type i = 0; i != s_vec.size(); i++)
 		{
-
 			e = p_vec[0]->collisionDetection(s_vec[i]);
 		}
-
 
 		p_vec[0]->updatePhysics(t, e);
 	}
@@ -32,17 +30,20 @@ void ObjectHandler::update_physics(double t)
 		for(std::vector<int>::size_type i = 0; i != p_vec.size(); i++) 
 		{
 			e = NULL;
-			for(std::vector<int>::size_type j = 0; j != p_vec.size(); j++)
-			{
-				// We should add a vector for all elements e
-				e = p_vec[i]->collisionDetection(p_vec[j]);
+            for(std::vector<int>::size_type j = 0; j != s_vec.size(); j++)
+            {
+                
+                e = p_vec[i]->collisionDetection(s_vec[j]);
 
-				// In case we collide with another object break (So only one collision is taken into account right now) FIXME
-				if(e != NULL)
-				{
-					break;
-				}
-			}
+            }
+
+            for(std::vector<int>::size_type k = 0; k != p_vec.size(); k++)
+            {
+                
+                e = p_vec[i]->collisionDetection(p_vec[k]);
+
+            }
+            
 		
 			p_vec[i]->updatePhysics(t, e);
 		}

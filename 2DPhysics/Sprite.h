@@ -12,13 +12,15 @@
 class Sprite: public Drawable{
 
 public:
-	Sprite(std::string location, Vector2 *pos, Vector2 s);
+	Sprite(std::string location, Vector2 pos, Vector2 s);
 
 	Vector2 size;
 	Bitmap bm;
 	
 	// DEBUGGING purpose
 	Vector<Vector2> collisions;
+	Vector2 p;
+	Vector2 prevp;
 
 private:
 	
@@ -26,7 +28,6 @@ private:
 	void loadTexture(std::string location);
 	// Draw the sprite
 	void draw();
-	Vector2 *p;
 };
 
 #endif

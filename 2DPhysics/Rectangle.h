@@ -9,8 +9,6 @@ class Rectangle: public PhysicsElement
 
 public:
 		Rectangle(std::string location, Vector2 pos, Vector2 size, Vector2 velocity, double mass);
-private:
-	Vector2 p;
 };
 
 #endif

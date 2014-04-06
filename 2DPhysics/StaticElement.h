@@ -13,11 +13,10 @@ class StaticElement : public Sprite
 	// A static element contains a position and has a size
 	// possibly also sprite data
 public:
-	StaticElement(string location, Vector2 *pos, Vector2 size);
-	StaticElement(Vector2 *pos, Vector2 size);
+	StaticElement(string location, Vector2 pos, Vector2 size);
+	StaticElement(Vector2 pos, Vector2 size);
 
 protected:
-	Vector2 *p;
 	Vector2 s;
 };
 
