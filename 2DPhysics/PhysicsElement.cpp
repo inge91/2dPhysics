@@ -1,15 +1,18 @@
 #include "PhysicsElement.h"
 // TODO//:
-//      At each collision step check if already is collided  DONE
-//                  (Do this for static and dynamic objects)
 //      fix the minimum velocity an object can have(to stop endless bouncing)
+//      Dynamic dynamic collision
+//      friction constant? 
+//      Add plasticity factor between the specific elements (the bounce constant)
+//      
 
-PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 pos, Vector2 velocity, Vector2 acc, double mass)
+PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 pos, Vector2 velocity, Vector2 acc, double plasticity, double mass)
 	: Sprite(location, pos, size)
 {
 	v = velocity;
 	a = acc;
 	m = mass;
+    pl = plasticity;
 }
 
 Vector2 PhysicsElement::calculateForces(Sprite *e )
@@ -22,44 +25,52 @@ Vector2 PhysicsElement::calculateForces(Sprite *e )
 bool first = true;
 double x = 0;
 double y = 0;
-void PhysicsElement::updatePhysics(double t, Sprite *e)
-{		
-	
-		Vector2 forces = calculateForces(e);
 
-		// Update position given active forces
-		a += forces * (1/m);
+void PhysicsElement::calculateVelocity(Sprite *e, double t)
+{
+
+		if(dynamic_cast<StaticElement*>(e) != NULL)
+		{
+			v = Vector2(v.x, -v.y * pl );
+		
+		}
+
+	    if(dynamic_cast<PhysicsElement*>(e) != NULL)
+	    {
+			//v = Vector2(-v.x*100, -v.y  );
+            Vector2 v2 = dynamic_cast<PhysicsElement*>(e)->getVelocity();
+
+            v = Vector2(10,-v.y);
+            v2 = Vector2(-10,0);
+        }
+}
+
+void PhysicsElement::updatePosition(double t)
+{
 		// Update velocity
 		v += a * t;
-
 		// gravity (this should be added to the calculate forces)
 		Vector2 gravity(0, 9.81);
+        // Let's add some wind
+        Vector2 wind (5, 0);
 
 		v += gravity * t;
-
-
-		if(e != NULL)
-		{
-			v = Vector2(v.x, -v.y * 0.5 );
-		
-			first = false;
-		}
-		else
-		{
-			first = true;
-		}
-
-	
+        //v += wind *t;
 		// store previous position
-         prevp = p;
+        prevp = p;
 
+        // If the velocity is too small, set to 0.
 		// Update position
 		p += v * t;
+}
+
+/*
+void PhysicsElement::updatePhysics(double t, Sprite *e)
+{		
 
 		// Add drag
 		//v *= pow(d, t);
-        
-}
+}*/
 
  Sprite* PhysicsElement::collisionDetection(Sprite* e)
 {
@@ -80,6 +91,11 @@ void PhysicsElement::updatePhysics(double t, Sprite *e)
         else
         {
 		   v = bm.detectCollision(e->bm, p, e->p);
+
+            if((v)[0].x != 0)
+            {
+                return e;
+            }
         }
 
 		if((v)[0].x != 0)
@@ -88,7 +104,6 @@ void PhysicsElement::updatePhysics(double t, Sprite *e)
 			collisions.push_back((v)[1]);
 			if(v.size() == 2)
 			{
-                cout<<"Hit tomething"<<endl;
 				return e;
 			}
 		}
@@ -109,10 +124,6 @@ vector<Vector2> PhysicsElement::collisionDetectionStatic(Sprite e)
     int px = (int)Drawable::meters2Pixels(p.x);
     int py = (int)Drawable::meters2Pixels(p.y);
 
-    cout<<"Begin pixels" <<endl;
-    cout<< prevx << " , "<<prevy<<endl;
-    cout<<"End pixels" <<endl;
-    cout<< px << " , "<<py<<endl;
         
     
     // Loop through all pixels on the line from start to end positions
@@ -154,12 +165,8 @@ vector<Vector2> PhysicsElement::collisionDetectionStatic(Sprite e)
         }
         
         // Calculate collision
-        cout<<tmp.p<<endl;
         v =  tmp.bm.detectCollision(e.bm, tmp.p, e.p);
 
-        cout<<"Between position: "<<endl;
-        cout<<Drawable::meters2Pixels(tmp.p.x)<<endl;
-        cout<<Drawable::meters2Pixels(tmp.p.y)<<endl;
         // In case of collision return it
         if((v)[0].x !=0)
         {

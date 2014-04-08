@@ -20,9 +20,9 @@ void ObjectHandler::update_physics(double t)
 		for(std::vector<int>::size_type i = 0; i != s_vec.size(); i++)
 		{
 			e = p_vec[0]->collisionDetection(s_vec[i]);
+            p_vec[0]->calculateVelocity(e,t);
 		}
 
-		p_vec[0]->updatePhysics(t, e);
 	}
 	/////////////////////////////////////////////////////////////////
 	else{
@@ -34,20 +34,31 @@ void ObjectHandler::update_physics(double t)
             {
                 
                 e = p_vec[i]->collisionDetection(s_vec[j]);
+                p_vec[i]->calculateVelocity(e,t);
 
             }
 
             for(std::vector<int>::size_type k = 0; k != p_vec.size(); k++)
             {
-                
+                // Dynamic object should not be checked with itself
+               /* if(i == k)
+                {
+                    continue;
+                }*/
+                e = NULL;
                 e = p_vec[i]->collisionDetection(p_vec[k]);
+                p_vec[i]->calculateVelocity(e,t);
 
             }
-            
 		
-			p_vec[i]->updatePhysics(t, e);
 		}
 	}
+
+    // Update positions of all physics elements
+	for(std::vector<int>::size_type i = 0; i != p_vec.size(); i++) 
+	{
+        p_vec[i]->updatePosition(t);
+    }
 }
 
 // Adds objects to all the different lists
