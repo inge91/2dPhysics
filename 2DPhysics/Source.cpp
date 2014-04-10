@@ -73,7 +73,7 @@ void mouseClick(int button, int state, int x, int y)
 			objs.add_object(static_cast<Object*>(b));
 		}
 		else{
-			Box *b = new Box(pos, Vector2(0,0));
+			BouncingBall *b = new BouncingBall(pos, Vector2(0,0));
 			objs.add_object(static_cast<Object*>(b));
 		}
 	}

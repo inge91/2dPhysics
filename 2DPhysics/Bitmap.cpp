@@ -17,7 +17,9 @@ void Bitmap::createBitmap(std::string location, Vector2 size)
 {
 	// TODO: read alpha values
 	bm = imread(location, CV_LOAD_IMAGE_GRAYSCALE);
+    
 	resize(bm, bm, Size(Drawable::meters2Pixels(size.x), Drawable::meters2Pixels(size.y)));
+
 	threshold(bm, bm, 220, 255, THRESH_BINARY);
 	cv::bitwise_not(bm, bm);
 }
@@ -51,7 +53,6 @@ vector<Vector2> Bitmap::detectCollision(Bitmap bm2, Vector2 p1, Vector2 p2)
 		cv::Mat m1 = bm(cv::Rect(xoffset1, yoffset1, width, height));
 
 		cv::Mat m2 = bm2.bm(cv::Rect(xoffset2, yoffset2, width, height));
-        cout<<"Here"<<endl;
 		Mat m3;
 		cv::bitwise_and(m1, m2, m3);
 
@@ -111,29 +112,14 @@ vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, Vector2 pf, Vector2
         - Drawable::meters2Pixels(bm2.s.x/2);
 	float xr2 = Drawable::meters2Pixels(ps.x) 
         + Drawable::meters2Pixels(bm2.s.x/2);
-    if(reversed)
-    {
-        cout<<"these are reversed"<<endl;
-    }
 
 	// highest point of square1 falls between second square
 	if(yd1 > yd2 && yd1 < yu2)
 	{
         
-        cout<<bm2.bm.size()<<endl;
-        cout<<"yd1"<<endl;
-        cout<<yd1<<endl;
-        cout<<"yu1"<<endl;
-        cout<<yu1<<endl;
-        cout<<"yd2"<<endl;
-        cout<<yd2<<endl;
-        cout<<"yu2"<<endl;
-        cout<<yu2<<endl;
-        cout<<"This is the case"<<endl;
 		// left most point of square 1 falls between second square
 		if(xl1 > xl2 && xl1 < xr2 )
 		{
-            cout<<"Case one"<<endl;
 			p1.x = xl1;
 			p1.y = yd1;
 
@@ -151,15 +137,6 @@ vector<Vector2> Bitmap::detectOverlap(Bitmap bm, Bitmap bm2, Vector2 pf, Vector2
 		// underside of square 2 falls in square 1
 		if(xl1 <= xl2 && xr1 >= xl2)
 		{
-        cout<<"Case two"<<endl;
-        cout<<"xl1"<<endl;
-        cout<<xl1<<endl;
-        cout<<"xr1"<<endl;
-        cout<<xr1<<endl;
-        cout<<"xl2"<<endl;
-        cout<<xl2<<endl;
-        cout<<"xr2"<<endl;
-        cout<<xr2<<endl;
 			p1.x = xl2;
 			p1.y = yd1;
 

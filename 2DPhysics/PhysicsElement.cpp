@@ -12,6 +12,7 @@ PhysicsElement::PhysicsElement(std::string location, Vector2 size, Vector2 pos, 
 	v = velocity;
 	a = acc;
 	m = mass;
+
     pl = plasticity;
 }
 
@@ -22,27 +23,41 @@ Vector2 PhysicsElement::calculateForces(Sprite *e )
 	return t;
 }
 
-bool first = true;
-double x = 0;
-double y = 0;
+
 
 void PhysicsElement::calculateVelocity(Sprite *e, double t)
 {
 
 		if(dynamic_cast<StaticElement*>(e) != NULL)
 		{
-			v = Vector2(v.x, -v.y * pl );
-		
-		}
+            // Only if velocity is strong enough make the bounce
+            v = Vector2(v.x, -v.y * pl );
+        }
 
-	    if(dynamic_cast<PhysicsElement*>(e) != NULL)
+        else if(dynamic_cast<PhysicsElement*>(e) != NULL)
 	    {
 			//v = Vector2(-v.x*100, -v.y  );
             Vector2 v2 = dynamic_cast<PhysicsElement*>(e)->getVelocity();
-
-            v = Vector2(10,-v.y);
-            v2 = Vector2(-10,0);
+            double m2 = dynamic_cast<PhysicsElement*>(e)->getMass();
+            v.x = (abs(v.x) * (m -  m2) + (2 * m2 * abs(v2.x))) /
+               (m + m2) ;
+            v.y= (abs(v.y) * (m -  m2) + (2 * m2 * abs(v2.y))) /
+               (m + m2) ;
+            v2.x = (abs(v2.x) * (m2 -  m) + (2 * m * abs(v.x))) /
+               (m + m2) ;
+            v2.y= -(abs(v2.y) * (m2 -  m) + (2 * m * abs(v.y))) /
+               (m + m2) ;
+        cout<<"Object with weigth "<<  m<<endl;
+            cout<<v<<endl;
+        cout<<"Object with weigth "<<  m2<<endl;
+            cout<<v2<<endl;
         }
+        else
+        {
+            cout<<"Go down"<<endl;
+        }
+
+
 }
 
 void PhysicsElement::updatePosition(double t)
@@ -50,11 +65,15 @@ void PhysicsElement::updatePosition(double t)
 		// Update velocity
 		v += a * t;
 		// gravity (this should be added to the calculate forces)
-		Vector2 gravity(0, 9.81);
+	    Vector2 gravity(0, 9.81);
+		    v += gravity * t;
         // Let's add some wind
         Vector2 wind (5, 0);
 
-		v += gravity * t;
+
+        cout<<"Object with weigth "<<  m<<endl;
+        cout<<v<<endl;
+        
         //v += wind *t;
 		// store previous position
         prevp = p;
@@ -102,10 +121,7 @@ void PhysicsElement::updatePhysics(double t, Sprite *e)
 		{
 			collisions.push_back((v)[0]);
 			collisions.push_back((v)[1]);
-			if(v.size() == 2)
-			{
 				return e;
-			}
 		}
 	}
 	
@@ -195,6 +211,11 @@ vector<Vector2> PhysicsElement::collisionDetectionStatic(Sprite e)
 Vector2 PhysicsElement::getVelocity()
 {
 	return v;
+}
+
+double PhysicsElement::getMass()
+{
+    return m;
 }
 
 Vector2 PhysicsElement::getPosition()

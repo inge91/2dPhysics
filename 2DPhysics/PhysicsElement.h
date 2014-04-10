@@ -25,6 +25,7 @@ class PhysicsElement : public Sprite
 	PhysicsElement(std::string location, Vector2 size, Vector2 pos, Vector2 velocity, Vector2 acc, double plasticity, double mass);
 	Vector2 getVelocity();
 	Vector2 getPosition();
+    double getMass();
 	void updatePhysics(double t, Sprite *e);
     void calculateVelocity(Sprite *e, double t);
     void updatePosition(double t);

@@ -10,6 +10,7 @@
 #include "Object.h"
 #include "StaticElement.h"
 #include "Sprite.h"
+#include "BouncingBall.h"
 
 #ifdef _WIN32
 #include <conio.h>
