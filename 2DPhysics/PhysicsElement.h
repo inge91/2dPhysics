@@ -20,10 +20,10 @@ class PhysicsElement : public Sprite
 	PhysicsElement(std::string location, Vector2 size, Vector2 *pos, Vector2 velocity, Vector2 acc, double mass);
 	Vector2 getVelocity();
 	Vector2 getPosition();
-	void updatePhysics(double t, Sprite *e);
-	Vector2 calculateForces(Sprite *e);
+	void updatePhysics(double t, PhysicsElement *e);
+	Vector2 calculateForces(PhysicsElement *e);
 	// Input argument should probably be something that also work on "static" objects
-	Sprite* collisionDetection(Sprite* e);
+	PhysicsElement* collisionDetection(PhysicsElement* e);
 };
 
 #endif
